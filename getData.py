@@ -2,7 +2,7 @@
 
 import requests
 import pandas as pd
-import numpy as np
+from pprint import pprint  # Allows "Pretty Printing" of dictionaries
 
 """
 Found this website that has national poll information
@@ -11,6 +11,7 @@ https://projects.fivethirtyeight.com/polls/president-general/
 A csv file can be downloaded from this address
 https://projects.fivethirtyeight.com/polls-page/president_polls.csv
 """
+verify_ssl = False  # True to enable SSL Certificate Check
 
 #%%
 # -----------------------------------------------------------------------------
@@ -22,7 +23,7 @@ url = 'https://projects.fivethirtyeight.com/polls-page/president_polls.csv'
 
 def getPollData(url=url):
     # Create a request object
-    r = requests.get(url, allow_redirects=True)
+    r = requests.get(url, allow_redirects=True, verify=verify_ssl)
 
     # Set the filename the data is to be saved to
     fileName = 'president_polls.csv'
@@ -103,3 +104,7 @@ def getPollData(url=url):
 
     return pollDict
 
+
+if __name__ == "__main__":
+    results = getPollData(url=url)
+    pprint(results)
