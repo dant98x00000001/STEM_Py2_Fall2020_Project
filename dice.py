@@ -1,4 +1,6 @@
 """
+File defining a few different "dice"
+
 Import the random package
 See
 https://docs.python.org/3/library/random.html
@@ -12,8 +14,7 @@ Created on Mon Nov 30 14:23:47 2020
 import random as rnd
 import numpy  as np
 
-#%% 
-
+#%% Die version 1
 def diev1():
     # Generate a random number U(0,1)
     rv=rnd.random()
@@ -36,7 +37,7 @@ def diev1():
     return dieVal
 
 
-#%%
+#%% Die version 2
 def diev2(cum_weights):
     # Generate a random number U(0,1)
     rv=rnd.random()
@@ -52,11 +53,8 @@ def diev2(cum_weights):
         else:
             iVal += 1
 
-        
-        
-        
-        
-#%%
+
+#%% Die Version 3
 def diev3(cum_weights):
     # Create a numpy array
     cum_weights=np.array(cum_weights)
